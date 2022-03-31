@@ -7,3 +7,23 @@ html{
     min-height: 100%;
     position: relative;
 }
+
+.btn.primario{
+    background-color:  #00485A;
+    border-color: #00485A;
+    color: white;
+}
+.btn.secundario{
+    background-color:  #FFAD01;
+    border-color: #FFAD01;
+    color: white;
+}
+
+#logo{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+}

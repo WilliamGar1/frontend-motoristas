@@ -1,0 +1,22 @@
+input,
+select,
+textarea{
+    border: 1px solid black;
+    border-radius: 0;
+}
+
+button{
+    width: 150px;
+    font-size: 22px;
+    border-radius: 15px;
+    background-color: #00485A;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+}

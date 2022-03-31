@@ -1,7 +1,6 @@
 input,
 select,
-textarea,
-button{
+textarea{
     border: 1px solid black;
     border-radius: 0;
 }
@@ -11,7 +10,6 @@ button{
     font-size: 22px;
     border-radius: 15px;
     background-color: #00485A;
-
 }
 
 #form{
