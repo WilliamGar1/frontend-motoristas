@@ -1,0 +1,44 @@
+input,
+select,
+textarea,
+button{
+    border: 1px solid black;
+    border-radius: 0;
+}
+
+button{
+    width: 150px;
+    font-size: 22px;
+    border-radius: 15px;
+    background-color: #00485A;
+
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+}
+
+label{
+    font-size: 18px;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+a:hover {
+    color:#000000;
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+form{
+    margin-bottom: 150px;
+}

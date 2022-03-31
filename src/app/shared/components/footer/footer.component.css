@@ -1,0 +1,35 @@
+.footer{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+    background-color:#00485A;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+    color: white ;
+}
+i{
+    font-size: 30px;
+    padding: 10px;
+}
+.ready{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch;
+    background-color:#00485A;
+    color: white ;
+}
+a{
+    text-decoration: none;
+}
+a:link, a:visited,  a:hover, a:active
+{
+    color: white;
+    text-decoration: none;
+}
