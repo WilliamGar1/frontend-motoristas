@@ -29,15 +29,15 @@ label{
 
 a {
     color: #000000;
-    text-decoration: none;
+    text-decoration: underline;
     font-size: 18px;
 }
 
-a:hover {
+/*a:hover {
     color:#000000;
     text-decoration: underline;
     cursor:pointer;
-}
+}*/
 
 form{
     margin-bottom: 150px;
