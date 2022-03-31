@@ -1,0 +1,12 @@
+.card{
+    border-radius: 0;
+}
+
+.per{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: space-between;
+}
