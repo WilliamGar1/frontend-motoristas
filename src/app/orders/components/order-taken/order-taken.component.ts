@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class OrderTakenComponent implements OnInit {
 
   taken: boolean = false;
+  hora = Date.now()
+  total: number = 250.56
 
   constructor() { }
 
