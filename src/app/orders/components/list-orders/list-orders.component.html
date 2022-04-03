@@ -1,29 +1,45 @@
-
 <app-header></app-header>
 
-<h1 class="text-center">Órdenes Disponibles</h1>
+<h1 class="text-center mb-4">Órdenes Disponibles</h1>
 
-<div class="card-group per">
+<div class="card-group">
     <div class="card">
-        <img class="card-img-top" src="assets/img/expresso.png" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="assets/img/matan.png" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="assets/img/burguer.jpg" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
+        <div class="row g-0">
+            <div class="col-5 d-flex align-items-center">
+                <img src="assets/img/matan.png" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-7">
+                <div class="card-body">
+                    <h5 class="card-title">Matambritas</h5>
+                    <p class="card-text"><i class="fa-solid fa-location-dot"></i><small class="text-muted mx-2">Los
+                            Proceres</small></p>
+                    <div class="d-grid gap-2">
+                        <button type="button" name="" id="" class="btn secundario fw-bolder" data-bs-toggle="modal"
+                            data-bs-target="#detalle">Detalles</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal" id="detalle" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">DE-152145</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Nombre cliente: Mario Perez</p>
+                <p>Celular: 9874-5484</p>
+                <p>Dirección: Comyagua Barrio Abajo calle n°13 colo de casa amarilla frente a la ferreteria Kayros</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn primario" data-bs-dismiss="modal" routerLink="/orders/taken">Tomar Órden</button>
+            </div>
+        </div>
+    </div>
+</div>

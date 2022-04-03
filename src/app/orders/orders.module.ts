@@ -6,12 +6,14 @@ import { ListOrdersComponent } from './components/list-orders/list-orders.compon
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { SharedModule } from '../shared/shared.module';
+import { OrderTakenComponent } from './components/order-taken/order-taken.component';
 
 
 @NgModule({
   declarations: [
     ListOrdersComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    OrderTakenComponent
   ],
   imports: [
     CommonModule,

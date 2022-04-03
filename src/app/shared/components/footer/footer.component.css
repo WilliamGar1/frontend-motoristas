@@ -8,9 +8,10 @@
     background-color:#00485A;
 	position: absolute;
 	bottom: 0;
+    right: 0;
+    left: 0;
 	width: 100%;
     color: white ;
-	margin-left: 0;
 }
 i{
     font-size: 30px;

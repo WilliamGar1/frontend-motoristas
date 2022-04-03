@@ -4,12 +4,13 @@
       <!-- Mobile Menu Toggle Button -->
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
         aria-controls="offcanvasNavbar">
+
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <div class="mt-2">
-        <i class="fa-solid fa-circle-user fs-1"></i>
-        <p>Hola</p>
+      <div class="mt-2 d-flex flex-column align-items-center">
+        <i class="fa-solid fa-circle-user fs-1 "></i>
+        <p class="">Hola Juan!</p>
       </div>
 
       <!-- Menus List -->
@@ -19,6 +20,8 @@
           <ul class="navbar-nav">
             <li><a routerLink="/orders/list"><i class="bi bi-inicio"></i> <span class="item-text">Órdenes
                   Disponibles</span></a></li>
+            <li><a [routerLink]="['/orders/taken']"><i class="bi bi-comercios"></i> <span
+                  class="item-text">Órden en progreso</span></a></li>
             <li><a routerLink="/orders/history"><i class="bi bi-comercios"></i> <span
                   class="item-text">Historial</span></a></li>
           </ul>
@@ -29,5 +32,5 @@
 </div>
 
 <div class="imagen">
-  <img src="assets/img/logo.png" class="w-50">
+  <img src="assets/img/logo.png" class="w-25">
 </div>
