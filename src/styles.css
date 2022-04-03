@@ -20,6 +20,12 @@ html{
     color: white;
 }
 
+.btn.otro{
+    background-color:  #243e73;
+    border-color: #243e73;
+    color: white;
+}
+
 #logo{
 	display: flex;
 	flex-direction: row;

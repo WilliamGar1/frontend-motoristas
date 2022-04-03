@@ -1,1 +1,23 @@
-<p>forgot-pass works!</p>
+
+<div class="mt-4 mx-4">
+    <i class="fa-solid fa-caret-left fs-1" routerLink="/auth/login"></i>
+</div>
+
+<div id="logo">
+    <img src="assets/img/logo.png" class="w-50">
+</div>
+
+<h1 class="text-center mb-4">Recuperar Contraseña</h1>
+
+<form class="d-flex flex-column align-items-center">
+    <div>
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" id="correo" placeholder="juanperez@example.com" value="" required>
+        <div id="correo" class="form-text">Se le enviará un correo para recuperar su contraseña</div>
+    </div>
+    <div>
+        <button class="btn otro mt-5" type="button">Enviar</button>
+    </div>
+</form>
+
+<app-footer></app-footer>

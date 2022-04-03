@@ -1,0 +1,29 @@
+.recuperar{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+
+.btn-dark{
+    width: 100px;
+}
+label{
+    font-size: 1.2em;
+}
+
+button{
+    width: 150px;
+    font-size: 22px;
+    border-radius: 15px;
+    background-color: #00485A;
+}
+
+input,
+select,
+textarea{
+    border: 1px solid black;
+    border-radius: 0;
+}
