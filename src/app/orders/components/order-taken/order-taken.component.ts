@@ -1,3 +1,4 @@
+import { ParseTreeResult } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderTakenComponent implements OnInit {
 
-  taken: boolean = false;
+  taken: boolean = true;
   hora = Date.now()
   total: number = 250.56
 
