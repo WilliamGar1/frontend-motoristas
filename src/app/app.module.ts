@@ -8,6 +8,8 @@ import { AuthModule } from './auth/auth.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdersModule } from './orders/orders.module';
 
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +19,8 @@ import { OrdersModule } from './orders/orders.module';
     BrowserModule,
     SharedModule,
     AuthModule,
-    OrdersModule
+    OrdersModule,
+    HttpClientModule,
   ],
   providers: [
     

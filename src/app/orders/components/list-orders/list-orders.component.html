@@ -3,19 +3,20 @@
 <h1 class="text-center mb-4">Órdenes Disponibles</h1>
 
 <div class="card-group">
-    <div class="card">
+    <div class="card" *ngFor="let order of orders">
         <div class="row g-0">
             <div class="col-5 d-flex align-items-center">
-                <img src="assets/img/matan.png" class="img-fluid rounded-start" alt="...">
+                <img src="http://localhost:3300/images/{{store(order)}}" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-7">
                 <div class="card-body">
-                    <h5 class="card-title">Matambritas</h5>
-                    <p class="card-text"><i class="fa-solid fa-location-dot"></i><small class="text-muted mx-2">Los
-                            Proceres</small></p>
+                    <h5 class="card-title">{{ order.empresa.nombre }}</h5>
+                    <p class="card-text"><i class="fa-solid fa-location-dot"></i><small class="text-muted mx-2">
+                        {{order.empresa.ubicacion}}
+                    </small></p>
                     <div class="d-grid gap-2">
                         <button type="button" name="" id="" class="btn secundario fw-bolder" data-bs-toggle="modal"
-                            data-bs-target="#detalle">Detalles</button>
+                            data-bs-target="#detalle" (click)="details(order)">Detalles</button>
                     </div>
                 </div>
             </div>
@@ -28,13 +29,13 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">DE-152145</h5>
+                <h5 class="modal-title">Detalles</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Nombre cliente: Mario Perez</p>
-                <p>Celular: 9874-5484</p>
-                <p>Dirección: Comyagua Barrio Abajo calle n°13 colo de casa amarilla frente a la ferreteria Kayros</p>
+                <p>Nombre cliente: {{selectedOrder.cliente.nombre}}</p>
+                <p>Celular: {{selectedOrder.cliente.celular}}</p>
+                <p>Dirección: {{selectedOrder.direccion.nombre}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
