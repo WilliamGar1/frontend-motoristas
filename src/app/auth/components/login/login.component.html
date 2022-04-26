@@ -8,18 +8,18 @@
 </div>
 
 <h1 class="text-center mb-4">Inicio de Sesión</h1>
-<form id="form">
+<form id="form" novalidate [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="form-group">
         <label for="correo" class="col-sm-1 col-form-label">Correo</label>
-        <input type="email" class="form-control" id="correo"  value="" placeholder="juanperez@example.com" required>
+        <input type="email" class="form-control" id="correo" formControlName = "email" value="" placeholder="juanperez@example.com" required>
     </div>
     <div class="form-group">
         <label for="password" class="col-sm-1 col-form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password"  value="" required>
+        <input type="password" class="form-control" id="password" formControlName = "passw" value="" required>
     </div>
     <!-- <a class="nav-link mb-4" routerLink="/auth/forgot">Olvidé mi Contraseña</a> -->
 
-    <button class="btn btn-dark fw-bold primario mt-2" type="button">Iniciar</button>
+    <button class="btn btn-dark fw-bold primario mt-2" type="submit">Iniciar</button>
 </form>
 
 <app-footer></app-footer>
