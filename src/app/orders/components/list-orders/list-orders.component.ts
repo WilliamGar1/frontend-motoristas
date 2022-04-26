@@ -24,7 +24,7 @@ export class ListOrdersComponent implements OnInit {
       celular:''
     },
     direccion:{
-      nombre:''
+      referencia:''
     }
   }
 
