@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OrdersService } from '../../services/orders.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-orders',
@@ -16,6 +18,7 @@ export class ListOrdersComponent implements OnInit {
   public stores: any = [];
 
   public selectedOrder = {
+    _id: '',
     cliente:{
       nombre:'',
       celular:''
@@ -25,8 +28,12 @@ export class ListOrdersComponent implements OnInit {
     }
   }
 
+  private datos = {};
 
-  constructor( private orderService: OrdersService) { }
+  constructor(
+    private orderService: OrdersService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.getOrders();
@@ -81,6 +88,42 @@ export class ListOrdersComponent implements OnInit {
       return e.nombre == order.empresa.nombre;
     });
     return img[0].logoEmpresa;
+  }
+
+  public takeOrder(order_id){
+    if (localStorage.getItem('order_id') == null){
+      localStorage.setItem('order_id', order_id);
+
+      this.datos = {
+        _id: localStorage.getItem('driver_id'),
+        estado: 'tomada'
+      }
+
+      this.orderService.updateOrder(this.datos, order_id)
+        .subscribe(data =>{
+          if(data.update){
+            Swal.fire(
+              '' + data.msg,
+              '',
+              'success',
+            );
+          }else{
+            Swal.fire(
+              '' + data.msg,
+              '',
+              'info',
+            );
+          }
+        })
+
+      this.router.navigate(['/orders/taken']);
+    }else{
+      Swal.fire(
+        'ERROR!',
+        'Ya existe una orden en progreso',
+        'warning',
+      );
+    }
   }
 
 }

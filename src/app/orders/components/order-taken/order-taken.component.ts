@@ -8,13 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderTakenComponent implements OnInit {
 
-  taken: boolean = true;
   hora = Date.now()
   total: number = 250.56
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  get orderTaken(){
+    if (localStorage.getItem('order_id') == null){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }
