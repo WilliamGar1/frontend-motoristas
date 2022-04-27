@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 
-export function esEmailValido(email: string):boolean {
+export function isValidEmail(email: string):boolean {
     let mailValido = false;
       'use strict';
 

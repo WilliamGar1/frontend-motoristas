@@ -15,4 +15,8 @@ export class AuthService {
   public postLogin(body): Observable<any>{
     return this.http.post(this.URL + '/motoristas/login', body);
   }
+
+  public postRegister(body): Observable<any>{
+    return this.http.post(this.URL + '/motoristas/nuevo', body);
+  }
 }
