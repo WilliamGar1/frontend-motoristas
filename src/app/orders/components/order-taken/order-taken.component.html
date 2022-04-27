@@ -7,20 +7,21 @@
 <ng-template #orden>
     <h1 class="text-center">Órden: {{ order._id.slice(19,25) }}</h1>
     <h5 class="mt-3 mb-3">Estado de la Órden</h5>
-    <div class="d-flex flex-row justify-content-evenly">
+    
+    <form novalidate [formGroup] = "stateForm" class="d-flex flex-row justify-content-evenly" >
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="estado" id="estado1">
-            <label class="form-check-label" for="estado1">
+            <input class="form-check-input" type="radio" formControlName="state" id="estado1" value="comercio" (ngModelChange)="updateOrder()">
+            <label class="form-check-label" for="onWay">
                 En el comercio
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="estado" id="estado2">
-            <label class="form-check-label" for="estado2">
+            <input class="form-check-input" type="radio" formControlName="state" id="estado2" value="camino" (ngModelChange)="updateOrder()">
+            <label class="form-check-label" for="inCommerce">
                 En camino
             </label>
         </div>
-    </div>
+    </form>
 
     <div class="accordion accordion-flush mt-4" id="accordionFlushExample">
         <div class="accordion-item">
@@ -37,7 +38,7 @@
                     <div class="card mb-3" *ngFor="let product of order.productos">
                         <div class="row g-0">
                             <div class="col-4 d-flex align-items-start">
-                                <img src="assets/img/ham.jpg" class="img-fluid rounded-start" alt="...">
+                                <img [src]="imgURL + getImg(product._id)" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-8">
                                 <div class="card-body">
@@ -67,12 +68,6 @@
 
 
     <div id="tiempo">
-        <p class="float-end mt-4 mx-4">{{hora | date:'mm:ss'}} min</p>
-        <i class="fa-solid fa-clock mt-4 mx-2"></i>Tiempo de la orden
-        <div class="progress mx-4 mt-4">
-            <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            </div>
-        </div>
         <div class="d-grid gap-2 col-6 mx-auto mt-4">
             <button class="btn primario" (click)="finishOrder()">Finalizar entrega</button>
         </div>

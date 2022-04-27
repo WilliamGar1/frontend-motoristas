@@ -46,4 +46,16 @@ export class OrdersService {
     return this.http.get(this.URL + `/orders/${id}`);
   }
 
+  public getProducts(name: string): Observable<any> {
+    return this.http.get(this.URL + `/categorias/empresas/${name}/productos`);
+  }
+
+  public updateOrderState(body: any, id: string): Observable<any> {
+    return this.http.put(this.URL + `/orders/${id}/update`, body);
+  }
+
+  public getHistory(id: String): Observable<any> {
+    return this.http.get(this.URL + `/orders/${id}/driver`);
+  }
+
 }

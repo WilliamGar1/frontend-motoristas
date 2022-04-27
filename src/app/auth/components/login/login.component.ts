@@ -52,10 +52,17 @@ export class LoginComponent implements OnInit {
     }else if(this.loginForm.valid){
       this.authService.postLogin(this.datos)
         .subscribe(data => {
-      
-          if(data.acceso){
+
+          if(data.state !== 'Activo'){
+            Swal.fire(
+              'Error!',
+              'Aún no has sido admitido',
+              'warning',
+            );
+          }else if(data.acceso){
             localStorage.setItem('driver_id', data._id);
             localStorage.setItem('token', data.token);
+            localStorage.setItem('name', data.name);
             //console.log(data.usuario);
             this.router.navigate(['/orders/list']);
           }else{
@@ -67,7 +74,13 @@ export class LoginComponent implements OnInit {
             );
           }
   
-      }, err => console.log(err));
+      }, err => {
+        Swal.fire(
+          'Error!',
+          'Contraseña o correo incorrectos',
+          'warning',
+        );
+      })
     }else{
       Swal.fire(
         'Error!',
