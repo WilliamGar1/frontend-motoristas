@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { esEmailValido } from '../../email.helper';
+import { isValidEmail } from '../../email.helper';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
   }
 
   get emailValido(){
-    return esEmailValido(this.loginForm.get('email').value)
+    return isValidEmail(this.loginForm.get('email').value)
   }
 
 }

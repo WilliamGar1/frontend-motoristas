@@ -9,34 +9,50 @@
 
 <h1 class="text-center mb-4">Regístrate</h1>
 
-<form class="row g-3" id="form">
+<form class="row g-3" id="form" novalidate [formGroup]="registerForm" (ngSubmit)="postRegister()">
     <div class="mb-4 row">
         <div class="col-md-2">
-            <label for="nombre" class="col-sm-1 col-form-label">Nombre</label>
+            <label for="name" class="col-sm-1 col-form-label">Nombre</label>
         </div>
         <div class="col-md-4">
-            <input type="text" class="form-control" id="nombre" value="" placeholder="Juan">
+            <input type="text" class="form-control" formControlName="name" id="name" value="" placeholder="Juan Perez">
         </div>
     </div>
     <div class="mb-4 row">
         <div class="col-md-2">
-            <label for="correo" class="form-label">Correo</label>
+            <label for="dni" class="col-sm-1 col-form-label">DNI</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" formControlName="dni" id="dni" value="" placeholder="0801-1986-00245">
+        </div>
+    </div>
+    <div class="mb-4 row">
+        <div class="col-md-2">
+            <label for="placa" class="col-sm-1 col-form-label">Placa</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" formControlName="placa" id="placa" value="" placeholder="HAB2658">
+        </div>
+    </div>
+    <div class="mb-4 row">
+        <div class="col-md-2">
+            <label for="email" class="form-label">Correo</label>
         </div>
         <div class="col-md-4">
             <div class="input-group">
-                <input type="email" class="form-control" id="correo"
-                    placeholder="usuario@server.com" aria-describedby="correo">
-                <span class="input-group-text" id="correo" style="border: 1px solid black;">@</span>
+                <input type="email" class="form-control" id="email" formControlName="email"
+                    placeholder="usuario@server.com" aria-describedby="email">
+                <span class="input-group-text" id="email" style="border: 1px solid black;">@</span>
             </div>
-            <!--<small *ngIf="!emailValido">Ingrese un correo correcto</small>-->
+            <small *ngIf="!emailValido">Ingrese un correo correcto</small>
         </div>
     </div>
     <div class="mb-4 row">
         <div class="col-md-2">
-            <label for="telefono" class="form-label">Celular</label>
+            <label for="cell" class="form-label">Celular</label>
         </div>
         <div class="col-md-4">
-            <input type="text" class="form-control" id="celular" placeholder="9587-7585">
+            <input type="text" class="form-control" formControlName="cell" id="cell" placeholder="9587-7585">
         </div>
 
     </div>
@@ -45,9 +61,9 @@
             <label for="password" class="col-sm-1 col-form-label">Contraseña</label>
         </div>
         <div class="col-md-4">
-            <input type="password" class="form-control" id="password" value="">
-            <!--<small *ngIf="!contraValida" class="form-text text-muted">Mínimo 8 caracteres, una letra mayúscula, un
-                número y un caracter especial (/#$%!) </small>-->
+            <input type="password" class="form-control"  formControlName="passw" id="password" value="">
+            <small *ngIf="!contraValida" class="form-text text-muted">Mínimo 8 caracteres, una letra mayúscula, un
+                número y un caracter especial (/#$%!) </small>
 
         </div>
 
@@ -59,38 +75,37 @@
             <label for="password2" class="col-form-label">Confirmar Contraseña</label>
         </div>
         <div class="col-md-4">
-            <input type="password" class="form-control" id="password2" value="">
-            <!--<small *ngIf="!passw2ConfirmIsValid; else contra" class="form-text text-muted">Repetir la contraseña</small>
+            <input type="password" class="form-control" formControlName="passw2" id="password2" value="">
+            <small *ngIf="!passw2ConfirmIsValid; else contra" class="form-text text-muted">Repetir la contraseña</small>
             <ng-template #contra>
-                <small *ngIf="this.registroForm?.errors?.['mismatch']">La contraseña no es igual</small>
-            </ng-template>-->
+                <small *ngIf="this.registerForm?.errors?.['mismatch']">La contraseña no es igual</small>
+            </ng-template>
         </div>
     </div>
 
     <div class="mb-4 row">
 
         <div class="col-md-2">
-            <label for="fechaNac" class="form-label">Fecha de Nacimiento</label>
+            <label for="birth" class="form-label">Fecha de Nacimiento</label>
         </div>
 
         <div class="col-md-4">
-            <input type="date" class="form-control" id="fechaNac" placeholder="25-08-2022">
+            <input type="date" class="form-control"  formControlName="birth" id="birth" placeholder="25-08-2022">
         </div>
     </div>
 
     <div class="col-12 mb-4">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="termino">
-            <label class="form-check-label" data-bs-toggle="modal" data-bs-target="#modalTerminos"
-                style="text-decoration: underline; cursor: pointer;">
+            <input class="form-check-input" type="checkbox" value="" formControlName="termino" id="termino">
+            <label class="form-check-label">
                 Acepto los términos y condiciones
-            </label>
-            <!-- <p class="error" *ngIf="this.registerForm.controls['termino'].errors?.['required']">
+            </label><br>
+            <small class="error text-muted" *ngIf="this.registerForm.controls['termino'].errors?.['required']">
                 Marque la casilla para aceptar los términos y condiciones.
-            </p> -->
+            </small>
         </div>
     </div>
-    <button class="btn primario fw-bold" (click)="validate()" type="button">Crear</button>
+    <button class="btn primario fw-bold" type="submit">Crear</button>
 </form>
 
 <app-footer></app-footer>
