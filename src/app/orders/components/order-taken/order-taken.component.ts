@@ -1,7 +1,9 @@
 import { ParseTreeResult } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Order } from '../../models/order-interface';
+import Swal from 'sweetalert2';
+import { Order, Producto } from '../../models/order-interface';
 import { OrdersService } from '../../services/orders.service';
 
 @Component({
@@ -11,9 +13,12 @@ import { OrdersService } from '../../services/orders.service';
 })
 export class OrderTakenComponent implements OnInit {
 
-  hora = Date.now()
+  public stateForm: FormGroup;
 
   public order: Order;
+  public products: any = [];
+
+  public imgURL = 'http://localhost:3300/images/'
 
   constructor(
     private route: Router,
@@ -22,14 +27,25 @@ export class OrderTakenComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrder();
+    this.crearRegistroForm();
+  }
+
+  crearRegistroForm(): void{
+    this.stateForm = new FormGroup({
+      state: new FormControl(false)
+    })
   }
 
   public getOrder() {
-    this.orderService.getOrder(this.orderTaken._id)
-      .subscribe(data => {
-        this.order = data;
-        console.log(this.order);
-      })
+    if(this.orderTaken._id !== null){
+
+      this.orderService.getOrder(this.orderTaken._id)
+        .subscribe(data => {
+          this.order = data;
+  
+          this.getProducts(this.order.empresa.nombre);
+        });
+    }
   }
 
   get orderTaken(){
@@ -40,7 +56,53 @@ export class OrderTakenComponent implements OnInit {
     }
   }
 
+  public updateOrder(){
+    var datos = {estado: this.stateForm.get('state').value};
+    var id = localStorage.getItem('order_id');
+
+    this.orderService.updateOrderState(datos, id)
+      .subscribe(data => {
+
+        if(data.update){
+          Swal.fire(
+            'Estado: En ' + datos.estado,
+            '' + data.msg,
+            'success',
+          );
+        }else{
+          Swal.fire(
+            '' + data.msg,
+            '',
+            'info',
+          );
+        }
+
+      })
+    
+  }
+
   public finishOrder(){
+    var datos = {estado: 'finalizada'};
+    var id = localStorage.getItem('order_id');
+
+    this.orderService.updateOrderState(datos, id)
+      .subscribe(data => {
+
+        if(data.update){
+          Swal.fire(
+            'Orden ' + datos.estado,
+            '' + data.msg,
+            'success',
+          );
+        }else{
+          Swal.fire(
+            '' + data.msg,
+            '',
+            'info',
+          );
+        }
+
+      })
     localStorage.removeItem('order_id');
     this.route.navigate(['orders/list']);
   }
@@ -62,4 +124,27 @@ export class OrderTakenComponent implements OnInit {
     return valor
   }
 
+  public getProducts(name: string){
+    this.orderService.getProducts(name)
+      .subscribe(data => {
+        this.products = data;
+        localStorage.setItem('product_img', JSON.stringify(this.products))
+      });
+  }
+
+  public getImg(_id){
+    var imgs = JSON.parse(localStorage.getItem('product_img')!);
+
+    var img;
+
+    imgs.forEach(p => {
+
+      if(p._id == _id){
+        img = p.imagenProducto
+      }
+      
+    });
+
+    return img;
+  }
 }

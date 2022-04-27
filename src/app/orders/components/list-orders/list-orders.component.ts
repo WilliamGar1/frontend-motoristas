@@ -13,6 +13,9 @@ export class ListOrdersComponent implements OnInit {
 
   suscription: Subscription;
 
+  private tiempoTranscurrido = Date.now();
+  public hoy = new Date(this.tiempoTranscurrido).toLocaleDateString();
+
   public orders: any = [];
 
   public stores: any = [];
@@ -96,7 +99,8 @@ export class ListOrdersComponent implements OnInit {
 
       this.datos = {
         _id: localStorage.getItem('driver_id'),
-        estado: 'tomada'
+        estado: 'tomada',
+        fecha: this.hoy
       }
 
       this.orderService.updateOrder(this.datos, order_id)
